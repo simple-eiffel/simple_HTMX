@@ -85,6 +85,32 @@ feature -- Headings
 			Result.text (a_text).do_nothing
 		end
 
+	h4: HTMX_H4
+			-- Create h4.
+		do
+			create Result.make
+		end
+
+	h4_text (a_text: READABLE_STRING_GENERAL): HTMX_H4
+			-- Create h4 with text.
+		do
+			create Result.make
+			Result.text (a_text).do_nothing
+		end
+
+	h5: HTMX_H5
+			-- Create h5.
+		do
+			create Result.make
+		end
+
+	h5_text (a_text: READABLE_STRING_GENERAL): HTMX_H5
+			-- Create h5 with text.
+		do
+			create Result.make
+			Result.text (a_text).do_nothing
+		end
+
 feature -- Form Elements
 
 	form: HTMX_FORM
@@ -109,6 +135,13 @@ feature -- Form Elements
 			-- Create hidden input.
 		do
 			create Result.make_hidden (a_name, a_value)
+		end
+
+	input_number (a_name: READABLE_STRING_GENERAL): HTMX_INPUT
+			-- Create number input with name.
+		do
+			create Result.make
+			Result.type_number.name (a_name).do_nothing
 		end
 
 	textarea (a_name: READABLE_STRING_GENERAL): HTMX_TEXTAREA
