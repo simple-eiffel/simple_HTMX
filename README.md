@@ -8,7 +8,9 @@
 [![Language](https://img.shields.io/badge/language-Eiffel-blue.svg)](https://www.eiffel.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Design by Contract](https://img.shields.io/badge/DbC-enforced-orange.svg)]()
-[![Void Safety](https://img.shields.io/badge/void_safety-all-brightgreen.svg)]()
+[![Void Safety](https://img.shields.io/badge/void_safety-all-brightgreen.svg)]
+
+**[Documentation](https://ljr1981.github.io/simple_htmx/)**
 
 ---
 

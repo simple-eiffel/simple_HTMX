@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple_htmx - Fluent HTML and HTMX Builder for Eiffel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="simple_* logo" class="logo">
+        </div>
+        <h1>simple_htmx</h1>
+        <p class="tagline">Fluent HTML and HTMX Builder for Eiffel Web Applications</p>
+        <div class="badges">
+            <span class="badge badge-rfc">Web Layer</span>
+            <span class="badge badge-version">v1.0.0</span>
+            <span class="badge badge-license">MIT</span>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#api">API Reference</a></li>
+            <li><a href="https://github.com/ljr1981/simple_htmx">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>
+                <strong>simple_htmx</strong> is a fluent HTML and HTMX attribute builder for Eiffel web
+                applications. It eliminates tedious string manipulation when generating HTML responses,
+                replacing verbose <code>.append()</code> chains with a clean, type-safe, chainable API.
+            </p>
+            <p>
+                Part of the <strong>simple_*</strong> ecosystem of focused, single-purpose Eiffel libraries.
+            </p>
+        </section>
+
+        <section id="quick-start">
+            <h2>Quick Start</h2>
+            <h3>Installation</h3>
+            <pre><code>&lt;library name="simple_htmx" location="$SIMPLE_HTMX\simple_htmx.ecf"/&gt;</code></pre>
+
+            <h3>Basic Usage</h3>
+            <pre><code>local
+    html: HTMX_FACTORY
+do
+    create html
+
+    -- Create a button with HTMX attributes
+    Result := html.button_text ("Save")
+        .class_ ("btn btn-primary")
+        .hx_post ("/api/save")
+        .hx_target ("#result")
+        .hx_swap_inner_html
+        .to_html_8
+
+    -- Output: &lt;button class="btn btn-primary" hx-post="/api/save"
+    --         hx-target="#result" hx-swap="innerHTML"&gt;Save&lt;/button&gt;
+end</code></pre>
+
+            <h3>Before and After</h3>
+            <pre><code>-- BEFORE (Manual String Building)
+Result.append ("&lt;div class=%"control col-")
+Result.append (a_control.col_span.out)
+Result.append ("%"hx-get=%"/api/data%"&gt;")
+
+-- AFTER (With simple_htmx)
+Result := html.div
+    .class_ ("control")
+    .class_ ("col-" + a_control.col_span.out)
+    .hx_get ("/api/data")
+    .to_html_8</code></pre>
+        </section>
+
+        <section id="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Fluent Interface</h4>
+                    <p>Build HTML with readable, chainable method calls</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Type-Safe HTMX</h4>
+                    <p>No typos in hx-get, hx-post, hx-target attributes</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Auto HTML Escaping</h4>
+                    <p>Security by default - XSS protection built-in</p>
+                </div>
+                <div class="feature-card">
+                    <h4>31 HTML Elements</h4>
+                    <p>All common elements with specialized methods</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Render Context</h4>
+                    <p>Eliminate repetitive URL parameter passing</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Design by Contract</h4>
+                    <p>Full preconditions and postconditions</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="api">
+            <h2>API Reference</h2>
+
+            <h3>HTMX Attributes</h3>
+            <table>
+                <tr><th>Category</th><th>Methods</th></tr>
+                <tr><td>Requests</td><td><code>hx_get</code>, <code>hx_post</code>, <code>hx_put</code>, <code>hx_patch</code>, <code>hx_delete</code></td></tr>
+                <tr><td>Targeting</td><td><code>hx_target</code>, <code>hx_swap</code>, <code>hx_swap_inner_html</code>, <code>hx_swap_outer_html</code></td></tr>
+                <tr><td>Triggers</td><td><code>hx_trigger</code>, <code>hx_trigger_click</code>, <code>hx_trigger_load</code></td></tr>
+                <tr><td>UX</td><td><code>hx_confirm</code>, <code>hx_indicator</code>, <code>hx_disable</code></td></tr>
+            </table>
+
+            <h3>Element Factory</h3>
+            <table>
+                <tr><th>Feature</th><th>Description</th></tr>
+                <tr><td><code>html.div</code></td><td>Create div element</td></tr>
+                <tr><td><code>html.span</code></td><td>Create span element</td></tr>
+                <tr><td><code>html.button_text (label)</code></td><td>Create button with text</td></tr>
+                <tr><td><code>html.input_text (name)</code></td><td>Create text input</td></tr>
+                <tr><td><code>html.form</code></td><td>Create form element</td></tr>
+                <tr><td><code>html.table</code></td><td>Create table element</td></tr>
+                <tr><td><code>html.link (url, text)</code></td><td>Create anchor link</td></tr>
+            </table>
+
+            <h3>Common Element Methods</h3>
+            <table>
+                <tr><th>Feature</th><th>Description</th></tr>
+                <tr><td><code>id (value)</code></td><td>Set element ID</td></tr>
+                <tr><td><code>class_ (value)</code></td><td>Add CSS class</td></tr>
+                <tr><td><code>data (key, value)</code></td><td>Add data attribute</td></tr>
+                <tr><td><code>text (content)</code></td><td>Set text content</td></tr>
+                <tr><td><code>containing (element)</code></td><td>Add child element</td></tr>
+                <tr><td><code>to_html_8</code></td><td>Render to STRING</td></tr>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Part of the <a href="https://github.com/ljr1981">simple_*</a> library collection</p>
+        <p class="copyright">MIT License - Copyright (c) 2024-2025, Larry Rix</p>
+    </footer>
+</body>
+</html>
