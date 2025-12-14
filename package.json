@@ -1,0 +1,9 @@
+{
+  "name": "simple_htmx",
+  "version": "0.1.0",
+  "description": "Simple HTMX - Fluent HTML and HTMX attribute builder for Eiffel web applications",
+  "author": "Larry Rix",
+  "license": "MIT",
+  "category": "web",
+  "keywords": ["htmx", "hypermedia", "spa", "ajax"]
+}
