@@ -87,21 +87,21 @@ render_control (a_control: MY_CONTROL; a_ctx: HTMX_RENDER_CONTEXT): STRING
 ### Add to your ECF
 
 ```xml
-<library name="simple_htmx" location="$SIMPLE_HTMX/simple_htmx.ecf"/>
+<library name="simple_htmx" location="$SIMPLE_EIFFEL/simple_htmx/simple_htmx.ecf"/>
 ```
 
 ### Environment Variable
 
-Set the environment variable to point to your simple_htmx directory:
+Set the environment variable (one-time setup for all simple_* libraries):
 
 **PowerShell:**
 ```powershell
-[System.Environment]::SetEnvironmentVariable('SIMPLE_HTMX', 'D:\prod\simple_htmx', 'User')
+[System.Environment]::SetEnvironmentVariable('SIMPLE_EIFFEL', 'D:\prod', 'User')
 ```
 
 **Command Prompt:**
 ```batch
-setx SIMPLE_HTMX "D:\prod\simple_htmx"
+setx SIMPLE_EIFFEL "D:\prod"
 ```
 
 ### Dependencies
